@@ -9,5 +9,5 @@ router.register('post', views.PostDetail, basename = 'PostDetail') #itemviewset 
 
 urlpatterns = [
     path('', PostListAPI, name='post-list'),
-    path('detail/', PostDetail, name='post-detail'),
+    path('detail/', PostDetail.as_view(), name='post-detail'),
 ]
