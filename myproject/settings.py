@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     # 새로 생성한 애플리케이션 추가
     'blog',
     'rest_framework',
-    'api',
 ]
 
 MIDDLEWARE = [
