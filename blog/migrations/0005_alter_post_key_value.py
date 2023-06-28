@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("blog", "0002_remove_post_author_remove_post_created_date_and_more"),
+        ("blog", "0004_alter_post_key_value"),
     ]
 
     operations = [
@@ -14,7 +14,10 @@ class Migration(migrations.Migration):
             model_name="post",
             name="key_value",
             field=models.FloatField(
-                default=1687938138.8716, primary_key=True, serialize=False, unique=True
+                default=1687938165.596743,
+                primary_key=True,
+                serialize=False,
+                unique=True,
             ),
         ),
     ]

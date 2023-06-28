@@ -10,7 +10,7 @@ class Post(models.Model):
     # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # title = models.CharField(max_length=200)
     # text = models.TextField()
-    key_value = models.IntegerField(primary_key=True, default=int(timezone.now().timestamp()))
+    key_value = models.FloatField(primary_key=True, verbose_name='key', unique=True, default=float(timezone.now().timestamp()))
     id_value = models.CharField(max_length=100, verbose_name='ID', default='123', unique=False)
     pw_value = models.CharField(max_length=100, verbose_name='PW', default='adc', unique=False)
 
