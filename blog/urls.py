@@ -5,9 +5,9 @@ from django.urls import include, path
 from .views import PostListAPI, PostDetail
 
 router = routers.DefaultRouter() #DefaultRouter를 설정
-router.register('post', views.PostDetail, basename = 'PostDetail') #itemviewset 과 item이라는 router 등록
+router.register('post', views.PostListAPI, basename = 'PostListAPI') #itemviewset 과 item이라는 router 등록
 
 urlpatterns = [
     path('', PostListAPI, name='post-list'),
-    path('detail/', PostDetail.as_view(), name='post-detail'),
+    path('detail/', PostDetail, name='post-detail'),
 ]
