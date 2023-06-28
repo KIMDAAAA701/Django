@@ -19,7 +19,7 @@ def getPost(request):
     return Response(serializer.data)
 
 @api_view(['POST'])
-def post_create(self, request):
+def post_create(request):
     # reqId = request.id
     # reqPw = request.pw
     reqData = request.data
