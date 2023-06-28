@@ -10,13 +10,13 @@ class Post(models.Model):
     # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # title = models.CharField(max_length=200)
     # text = models.TextField()
-
-    id = models.CharField(max_length=100, verbose_name='ID', default='', primary_key=True)
-    pw = models.CharField(max_length=100, verbose_name='PW', default='')
+    published_date = models.DateTimeField(default=timezone.now, blank=True, primary_key=True)
+    id = models.CharField(max_length=100, verbose_name='ID', default='123')
+    pw = models.CharField(max_length=100, verbose_name='PW', default='adc')
 
     # created_date = models.DateTimeField(
     #         default=timezone.now)
-    published_date = models.DateTimeField(default=timezone.now)
+    # published_date = models.DateTimeField(default=timezone.now, blank=True)
 
     def publish(self):
         self.published_date = timezone.now()
