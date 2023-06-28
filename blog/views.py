@@ -11,7 +11,6 @@ from rest_framework import status
 
 from .serializer import PostSerializer
 
-@api_view
 class PostListAPI(APIView):
     def get(self, request):
         queryset = Post.objects.all()
