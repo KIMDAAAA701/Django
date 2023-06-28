@@ -31,4 +31,5 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def get_extra_actions(self):
         # 추가적인 액션을 정의하는 메서드
-        return []
+        return None
+    
