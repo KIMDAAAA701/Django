@@ -11,12 +11,12 @@ class Post(models.Model):
     # title = models.CharField(max_length=200)
     # text = models.TextField()
 
-    id = models.CharField(max_length=100, verbose_name='ID', default='')
+    id = models.CharField(max_length=100, verbose_name='ID', default='', primary_key=True)
     pw = models.CharField(max_length=100, verbose_name='PW', default='')
 
     # created_date = models.DateTimeField(
     #         default=timezone.now)
-    published_date = models.DateTimeField(default=timezone.now, primary_key=True)
+    published_date = models.DateTimeField(default=timezone.now)
 
     def publish(self):
         self.published_date = timezone.now()
