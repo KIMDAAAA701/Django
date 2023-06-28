@@ -18,14 +18,15 @@ class PostListAPI(APIView):
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data)
 
-@api_view(['POST'])
-def PostDetail(request):
-    # reqId = request.id
-    # reqPw = request.pw
-    reqData = request.data
-    serializer = PostSerializer(data=reqData)
+    @api_view(['POST'])
+    def post_create(self, request):
+        # reqId = request.id
+        # reqPw = request.pw
+        reqData = request.data
+        serializer = PostSerializer(data=reqData)
 
-    if serializer.is_valid(raise_exception=True):
-        serializer.save() # 데이터베이스에 테이블 저장
+        if serializer.is_valid(raise_exception=True):
+            serializer.save() # 데이터베이스에 테이블 저장
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
