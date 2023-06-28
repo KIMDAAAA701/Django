@@ -3,10 +3,11 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.shortcuts import render
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Post
 from rest_framework.views import APIView
-from rest_framework import generics
+from rest_framework import generics, status
 
 from .serializer import PostSerializer
 
@@ -18,18 +19,13 @@ class PostListAPI(APIView):
         serializer = PostSerializer(queryset, many=True)
         return Response(serializer.data)
 
-class PostDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
+@api_view(['POST'])
+def PostDetail(request):
+    # reqId = request.id
+    # reqPw = request.pw
+    reqData = request.data
+    serializer = PostSerializer(data=reqData)
 
-    basename = 'PostDetail'  # 원하는 basename을 지정하세요
+    serializer.save() # 데이터베이스에 테이블 저장
 
-    def get_queryset(self):
-        # 원하는 queryset을 동적으로 반환하는 로직을 작성하세요
-        id = self.kwargs['id']  # URL 매개변수로부터 id 값을 가져옴
-        return Post.objects.filter(id=id)  # 원하는 조건에 맞게 queryset을 필터링하거나 정렬하세요
-
-    def get_extra_actions(self):
-        # 추가적인 액션을 정의하는 메서드
-        return None
-    
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
