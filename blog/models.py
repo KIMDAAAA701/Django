@@ -24,4 +24,4 @@ class Post(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title
+        return self.id
