@@ -10,9 +10,9 @@ class Post(models.Model):
     # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # title = models.CharField(max_length=200)
     # text = models.TextField()
-    published_date = models.DateTimeField(default=timezone.now, blank=True, primary_key=True)
-    id = models.CharField(max_length=100, verbose_name='ID', default='123')
-    pw = models.CharField(max_length=100, verbose_name='PW', default='adc')
+    key_value = models.IntegerField(primary_key=True, default=int(timezone.now().timestamp()))
+    id_value = models.CharField(max_length=100, verbose_name='ID', default='123', unique=False)
+    pw_value = models.CharField(max_length=100, verbose_name='PW', default='adc', unique=False)
 
     # created_date = models.DateTimeField(
     #         default=timezone.now)

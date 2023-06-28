@@ -28,5 +28,12 @@ def post_create(request):
     if serializer.is_valid(raise_exception=True):
         serializer.save() # 데이터베이스에 테이블 저장
 
+        if serializer.is_valid(raise_exception=True):
+            # 중복 검사 로직 추가
+            id_value = reqData.get('id_value')
+            if Post.objects.filter(id_value=id_value).exists():
+                return Response({'error': 'Duplicate ID value'}, status=status.HTTP_400_BAD_REQUEST)
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
