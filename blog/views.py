@@ -28,3 +28,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         # 원하는 queryset을 동적으로 반환하는 로직을 작성하세요
         id = self.kwargs['id']  # URL 매개변수로부터 id 값을 가져옴
         return Post.objects.filter(id=id)  # 원하는 조건에 맞게 queryset을 필터링하거나 정렬하세요
+
+    def get_extra_actions(self):
+        # 추가적인 액션을 정의하는 메서드
+        return []
